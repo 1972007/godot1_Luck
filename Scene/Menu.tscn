@@ -145,18 +145,16 @@ script = ExtResource( 8 )
 position = Vector2( 508.362, 163.462 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="knight1" type="AnimatedSprite" parent="."]
 position = Vector2( 170, 478 )
 frames = SubResource( 8 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="knight2" type="AnimatedSprite" parent="."]
 position = Vector2( 830.538, 467.806 )
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 13 )
-frame = 1
 playing = true

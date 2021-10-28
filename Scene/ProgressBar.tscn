@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Pictures/Menu/Flag.png" type="Texture" id=1]
+[ext_resource path="res://Pictures/green.png" type="Texture" id=2]
+[ext_resource path="res://Pictures/grey.png" type="Texture" id=3]
+[ext_resource path="res://sprite/Pixilart Sprite Sheet.png" type="Texture" id=4]
+[ext_resource path="res://Script/TextureProgress.gd" type="Script" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 200, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 400, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 600, 0, 200, 200 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -395.0
+margin_bottom = -479.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = 11.0
+margin_top = 48.0
+margin_right = 433.0
+margin_bottom = 67.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+nine_patch_stretch = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlagStart" type="Sprite" parent="."]
+position = Vector2( 34.577, 24 )
+scale = Vector2( 1.15243, 1.16217 )
+texture = ExtResource( 1 )
+offset = Vector2( -16, 16 )
+
+[node name="FlagFinish" type="Sprite" parent="."]
+position = Vector2( 424, 24 )
+scale = Vector2( 1.15243, 1.16217 )
+texture = ExtResource( 1 )
+offset = Vector2( -16, 16 )
+
+[node name="IndicatorSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -11, -15 )
+scale = Vector2( 0.529628, 0.558755 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
+centered = false
