@@ -16,4 +16,6 @@ func _ready():
 #	pass
 
 func heart_manage(hitpoint):
-	pass
+	for x in hitpoint:
+		
+		pass
