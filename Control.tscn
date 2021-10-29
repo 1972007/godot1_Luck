@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scene/JosephKnight.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Pictures/Platformer assets pack/Platformer assets pack/Tileset/Tileset.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Script/Map.gd" type="Script" id=13]
 [ext_resource path="res://Scene/ProgressBar.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scene/Heart.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Pictures/Rumah2.png" type="Texture" id=16]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 25.2307, 32, 25.2307 )
@@ -326,3 +327,9 @@ position = Vector2( 207.131, 452.032 )
 [node name="JosephKnight" parent="Map" instance=ExtResource( 1 )]
 position = Vector2( 93.3428, 500.526 )
 scale = Vector2( 0.823593, 0.82865 )
+
+[node name="Node2D" type="Node2D" parent="Map"]
+
+[node name="Rumah2" type="Sprite" parent="."]
+position = Vector2( 1636.55, 346.181 )
+texture = ExtResource( 16 )
