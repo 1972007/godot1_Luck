@@ -249,6 +249,10 @@ __meta__ = {
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource( 13 )
 
+[node name="Rumah2" type="Sprite" parent="Map"]
+position = Vector2( 1649.9, 415.593 )
+texture = ExtResource( 16 )
+
 [node name="pixil-frame-0" type="Sprite" parent="Map"]
 position = Vector2( 6528.38, 363.66 )
 texture = ExtResource( 9 )
@@ -262,6 +266,8 @@ margin_right = -296.496
 margin_bottom = -510.164
 
 [node name="Heart" parent="Map/CanvasProgress" instance=ExtResource( 15 )]
+margin_top = 25.0
+margin_bottom = -512.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Map"]
 scroll_base_scale = Vector2( 0, 0 )
@@ -314,7 +320,7 @@ position = Vector2( 575.685, 434.612 )
 scale = Vector2( 3, 3 )
 
 [node name="JosephGiant" parent="Map" instance=ExtResource( 3 )]
-position = Vector2( 6216.06, 294.31 )
+position = Vector2( 6233.01, 171.412 )
 scale = Vector2( 2.5, 2.5 )
 
 [node name="Lucky\'sKnight" parent="Map" instance=ExtResource( 5 )]
@@ -329,7 +335,3 @@ position = Vector2( 93.3428, 500.526 )
 scale = Vector2( 0.823593, 0.82865 )
 
 [node name="Node2D" type="Node2D" parent="Map"]
-
-[node name="Rumah2" type="Sprite" parent="."]
-position = Vector2( 1636.55, 346.181 )
-texture = ExtResource( 16 )

@@ -1,55 +1,21 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Pictures/Heart/heartSprite2.png" type="Texture" id=1]
 [ext_resource path="res://Script/Heart.gd" type="Script" id=2]
-
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 220, 200 )
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 220, 0, 220, 200 )
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.943878
-margin_right = 0.943848
+margin_left = 1.0
+margin_right = 1.0
+margin_bottom = -537.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 40.0
+margin_right = 372.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="HeartBar1" type="AnimatedSprite" parent="HBoxContainer"]
-position = Vector2( 35.7636, 35.8281 )
-scale = Vector2( 0.2, 0.2 )
-frames = SubResource( 3 )
-
-[node name="HeartBar2" type="AnimatedSprite" parent="HBoxContainer"]
-position = Vector2( 118.607, 35.8281 )
-scale = Vector2( 0.2, 0.2 )
-frames = SubResource( 3 )
-offset = Vector2( -159.218, 0 )
-
-[node name="HeartBar3" type="AnimatedSprite" parent="HBoxContainer"]
-position = Vector2( 136.595, 35.772 )
-scale = Vector2( 0.2, 0.2 )
-frames = SubResource( 3 )
