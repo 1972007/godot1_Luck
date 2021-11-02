@@ -312,11 +312,11 @@ tile_set = SubResource( 7 )
 format = 1
 
 [node name="SilviaGiant" parent="Map" instance=ExtResource( 6 )]
-position = Vector2( 954.157, 168.066 )
+position = Vector2( 393.79, 186.046 )
 scale = Vector2( 3, 3 )
 
 [node name="LuckyGiant" parent="Map" instance=ExtResource( 8 )]
-position = Vector2( 575.685, 434.612 )
+position = Vector2( 523.244, 160.422 )
 scale = Vector2( 3, 3 )
 
 [node name="JosephGiant" parent="Map" instance=ExtResource( 3 )]

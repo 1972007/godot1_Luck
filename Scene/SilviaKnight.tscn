@@ -35,5 +35,4 @@ animations = [ {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
 animation = "idle"
-frame = 2
 playing = true
