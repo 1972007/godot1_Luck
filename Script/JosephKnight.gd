@@ -8,12 +8,19 @@ var movement=Vector2(0,0)
 const gravity = 20
 const jump_force = -400
 var jump_count = 0
+var can_attack=true
 
+var health=3
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	
+	$AnimatedSprite.animation="walk"
+	$attackCollision.disabled=true
+	
+		
+		
 func _physics_process(delta):
+	
 	if (not is_on_floor()):
 		movement.y += gravity
 	else:
@@ -25,6 +32,7 @@ func _physics_process(delta):
 		movement.x = speed
 	elif(Input.is_action_pressed("Kiri")):
 		$AnimatedSprite.set_flip_h(true)
+		
 		movement.x = -speed
 	else:
 		movement.x = 0
@@ -37,13 +45,45 @@ func _physics_process(delta):
 		$AnimatedSprite.stop()
 	elif(movement.x!=0):
 		$AnimatedSprite.play()
-	move_and_slide(movement,Vector2(0,-1))
 	if(is_on_ceiling()):
 		movement.y = 0
 	if(is_on_wall()):
 		movement.x = 0
+		
+	if(Input.is_action_pressed("Attack") and can_attack):
+		attack()
+		can_attack=false
+		$attackCooldownTimer.start()
+	move_and_slide(movement,Vector2(0,-1))
+	flip_hitbox()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 func get_pos():
 	return position
+
+func attack():
+	print("Attack")
+	$attackAnimationTimer.start()
+	$attackCollision.disabled=false
+	$AnimatedSprite.animation="atk"
+	$AnimatedSprite.set_frame(1)
+func walk():
+	$AnimatedSprite.animation="walk"
+	$attackCollision.disabled=true
+	
+func flip_hitbox():
+	if($attackCollision.position.x<0 and Input.is_action_just_pressed("Kanan")) or ( Input.is_action_just_pressed("Kiri") and $attackCollision.position.x>0):
+		$attackCollision.position.x *=-1
+	if($CollisionShape2D.position.x>0 and Input.is_action_just_pressed("Kanan")) or ( Input.is_action_just_pressed("Kiri") and $CollisionShape2D.position.x<0):
+		$CollisionShape2D.position.x *=-1
+		
+
+
+func _on_attackTimer_timeout():
+	can_attack=true
+func reduce_health(dmg):
+	if(health>dmg):
+		health-=dmg
+	else:
+		health=0
