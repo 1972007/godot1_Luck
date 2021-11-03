@@ -3,6 +3,7 @@ extends Control
 
 # Declare member variables here. Examples:
 var hp_def=3
+var hp_left=3
 # var b = "text"
 var Heart = preload("res://Scene/HeartSprite.tscn").instance()
 
@@ -15,8 +16,15 @@ func _ready():
 	for x in range(0,hp_def):
 		print("heart added",heart_len,Heart.get_len())
 		$HBoxContainer.add_child( preload("res://Scene/HeartSprite.tscn").instance())
+	print(hp_left,$HBoxContainer.get_child(hp_left-1))
 
+func _reduce_one():
+	print("reduced")
+	if(hp_left>0):
+		hp_left-=1
 
+		$HBoxContainer.get_child(hp_left).get_node("AnimatedSprite").set_frame(1)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -43,7 +43,7 @@ animations = [ {
 "frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "atk",
-"speed": 5.0
+"speed": 3.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=8]
@@ -61,7 +61,6 @@ script = ExtResource( 2 )
 scale = Vector2( 1.70614, 1.88724 )
 frames = SubResource( 7 )
 animation = "atk"
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( -8.89041, -13.4695 )
@@ -80,10 +79,3 @@ editor_draw_limits = true
 position = Vector2( 28.688, -27.4744 )
 shape = SubResource( 9 )
 disabled = true
-
-[node name="attackCooldownTimer" type="Timer" parent="KinematicBody2D"]
-wait_time = 0.5
-
-[node name="attackAnimationTimer" type="Timer" parent="KinematicBody2D"]
-
-[connection signal="timeout" from="KinematicBody2D/attackCooldownTimer" to="KinematicBody2D" method="_on_attackTimer_timeout"]

@@ -9,6 +9,7 @@ const gravity = 20
 const jump_force = -400
 var jump_count = 0
 var can_attack=true
+var attacking=false
 
 var health=3
 # Called when the node enters the scene tree for the first time.
@@ -52,8 +53,10 @@ func _physics_process(delta):
 		
 	if(Input.is_action_pressed("Attack") and can_attack):
 		attack()
-		can_attack=false
-		$attackCooldownTimer.start()
+		
+	if(not can_attack):
+		walk()
+	
 	move_and_slide(movement,Vector2(0,-1))
 	flip_hitbox()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -63,12 +66,13 @@ func get_pos():
 	return position
 
 func attack():
+	
 	print("Attack")
-	$attackAnimationTimer.start()
 	$attackCollision.disabled=false
 	$AnimatedSprite.animation="atk"
 	$AnimatedSprite.set_frame(1)
 func walk():
+	
 	$AnimatedSprite.animation="walk"
 	$attackCollision.disabled=true
 	
@@ -79,9 +83,6 @@ func flip_hitbox():
 		$CollisionShape2D.position.x *=-1
 		
 
-
-func _on_attackTimer_timeout():
-	can_attack=true
 func reduce_health(dmg):
 	if(health>dmg):
 		health-=dmg
