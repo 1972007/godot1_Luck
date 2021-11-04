@@ -47,6 +47,3 @@ position = Vector2( 1.12247, 27.7194 )
 scale = Vector2( 1.33474, 0.34725 )
 shape = SubResource( 5 )
 disabled = true
-
-[node name="jumpTimer" type="Timer" parent="KinematicBody2D"]
-wait_time = 5.0

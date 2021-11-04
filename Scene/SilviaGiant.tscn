@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://sprite/Silvia'sGiant.png" type="Texture" id=1]
+[ext_resource path="res://Script/SilviaGiant.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -30,14 +31,14 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=6]
-radius = 14.2237
-height = 36.1698
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 14.9536, 34.2783 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 8.55469, 15.2999 )
 
 [node name="SilviaGiant" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
@@ -45,13 +46,14 @@ extents = Vector2( 8.55469, 15.2999 )
 position = Vector2( 0, -1.49765 )
 frames = SubResource( 5 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 1.88989, 0.629974 )
-shape = SubResource( 6 )
+position = Vector2( 1.25993, -0.629944 )
+shape = SubResource( 8 )
 
 [node name="attackCollision" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( 25.1984, -2.51984 )
 shape = SubResource( 7 )
+disabled = true

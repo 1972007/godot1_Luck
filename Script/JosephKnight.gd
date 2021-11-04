@@ -8,9 +8,9 @@ var movement=Vector2(0,0)
 const gravity = 20
 const jump_force = -400
 var jump_count = 0
-var can_attack=true
-var attacking=false
 
+var cooldown=0
+var attack_time=0
 var health=3
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,12 +51,19 @@ func _physics_process(delta):
 	if(is_on_wall()):
 		movement.x = 0
 		
-	if(Input.is_action_pressed("Attack") and can_attack):
+	if(Input.is_action_just_pressed("Attack") and cooldown<=0):
 		attack()
-		
-	if(not can_attack):
+		attack_time=0.2
+		cooldown=0.2
+	if(attack_time>0):
+		$AnimatedSprite.animation="atk"
+		$AnimatedSprite.set_frame(1)
+		attack_time-=delta	
+	else:
 		walk()
-	
+	print(cooldown)
+	if(cooldown>0):
+		cooldown-=delta
 	move_and_slide(movement,Vector2(0,-1))
 	flip_hitbox()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
