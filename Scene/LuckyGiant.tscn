@@ -26,7 +26,7 @@ animations = [ {
 extents = Vector2( 15.7294, 25.0918 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 1.66233, 10 )
+extents = Vector2( 1.6, 10 )
 
 [node name="LuckyGiant" type="Node2D"]
 script = ExtResource( 2 )
@@ -40,14 +40,14 @@ frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 0.841843, 5.61231 )
+position = Vector2( 0, 5 )
 shape = SubResource( 4 )
 
 [node name="Area2D" type="Area2D" parent="KinematicBody2D"]
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Area2D"]
-position = Vector2( 1.68369, 24.1329 )
+position = Vector2( 0, 21.315 )
 scale = Vector2( 9.46229, 0.849904 )
 shape = SubResource( 5 )
 

@@ -21,8 +21,10 @@ func _physics_process(delta):
 	#print($KinematicBody2D/attackCollision.disabled)
 	if (not $KinematicBody2D.is_on_floor()):
 		movement.y += gravity
+		$KinematicBody2D/Area2D/CollisionShape2D.disabled=false
 		
 	else:
+		$KinematicBody2D/Area2D/CollisionShape2D.disabled=true
 		movement.y = 0
 		if(jump_count<=0 and cooldown>=0.3):
 			attack()
@@ -67,9 +69,7 @@ func death():
 
 
 func _on_Area2D_body_entered(body):
-	print(body.get_parent().name)
 	if(body.get_parent().name=="JosephKnight"):
-		print(body.get_parent().get_parent().name)
 		body.get_parent().get_parent().monster_strike()
 		attack()
 		
