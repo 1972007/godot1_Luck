@@ -4,10 +4,56 @@
 [ext_resource path="res://Pictures/Menu/Exit2.png" type="Texture" id=2]
 [ext_resource path="res://Scene/Play.gd" type="Script" id=3]
 [ext_resource path="res://sprite/Lucky'sMonster.png" type="Texture" id=4]
-[ext_resource path="res://sprite/Pixilart Sprite Sheet.png" type="Texture" id=5]
+[ext_resource path="res://sprite/Pixilart Sprite Sheet (1).png" type="Texture" id=5]
 [ext_resource path="res://sprite/SilviaKnight.png" type="Texture" id=6]
 [ext_resource path="res://Pictures/Platformer assets pack/Platformer assets pack/Background/Background.png" type="Texture" id=7]
 [ext_resource path="res://Script/Exit.gd" type="Script" id=8]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 100, 0, 100, 100 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 100, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 200, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 300, 0, 100, 100 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
@@ -37,57 +83,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 200, 200 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 200, 0, 200, 200 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 400, 0, 200, 200 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 600, 0, 200, 200 )
-
-[sub_resource type="SpriteFrames" id=8]
-animations = [ {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 100, 100 )
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 100, 0, 100, 100 )
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
 [node name="Control" type="Control"]
 anchor_right = 0.999
 anchor_bottom = 1.0
-margin_right = 0.0239258
-margin_bottom = 4.0
+margin_right = 1.02399
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -123,6 +122,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="monster1" type="AnimatedSprite" parent="VBoxContainer"]
+position = Vector2( 152.862, -142.022 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 3 )
+playing = true
+
 [node name="Play" type="Button" parent="VBoxContainer"]
 margin_right = 312.0
 margin_bottom = 128.0
@@ -141,24 +146,11 @@ icon = ExtResource( 2 )
 flat = true
 script = ExtResource( 8 )
 
-[node name="Node" type="Node" parent="."]
-
-[node name="knight2" type="AnimatedSprite" parent="Node"]
-position = Vector2( 830.538, 467.806 )
-scale = Vector2( 0.6, 0.6 )
-frames = SubResource( 13 )
-frame = 3
-playing = true
-
-[node name="knight1" type="AnimatedSprite" parent="Node"]
-position = Vector2( 170, 478 )
-frames = SubResource( 8 )
-frame = 3
-playing = true
-
-[node name="monster1" type="AnimatedSprite" parent="Node"]
-position = Vector2( 508.362, 163.462 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VBoxContainer"]
+position = Vector2( -149.831, 158.821 )
 scale = Vector2( 3, 3 )
-frames = SubResource( 3 )
-frame = 1
-playing = true
+frames = SubResource( 8 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="VBoxContainer"]
+position = Vector2( 462.977, 134.848 )
+frames = SubResource( 13 )

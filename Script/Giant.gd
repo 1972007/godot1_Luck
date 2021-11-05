@@ -7,8 +7,8 @@ const gravity = 20
 const jump_force = -400
 var jump_count = 0
 
-var walk_distance=24000
-var right=true
+var walk_distance=0
+var right=false
 var cooldown=0
 var attack_time=0
 var health=5
@@ -36,15 +36,15 @@ func _physics_process(delta):
 		jump_count = 0
 	
 	if(right):
-		walk_distance+=speed
+		walk_distance-=speed
 		move_right()
 	if(not right):
-		walk_distance-=speed
+		walk_distance+=speed
 		move_left()
-	if(walk_distance>24000 ):
-		right=false
-	if(walk_distance<0):
+	if(walk_distance>=28000 ):
 		right=true
+	if(walk_distance<=0):
+		right=false
 	movement.x = lerp(movement.x,0,0.1)
 	$KinematicBody2D.move_and_slide(movement,Vector2(0,-0.5))
 func reduce_health(dmg=1):
@@ -55,21 +55,21 @@ func reduce_health(dmg=1):
 	
 
 func flip_hitbox():
-	if($KinematicBody2D/CollisionShape2D.position.x>0 and right) or ($KinematicBody2D/CollisionShape2D.position.x<0  and not right):
+	if($KinematicBody2D/CollisionShape2D.position.x>0 and  not right) or ($KinematicBody2D/CollisionShape2D.position.x<0  and right):
 		$KinematicBody2D/CollisionShape2D.position.x *=-1
-	if($KinematicBody2D/Area2D/CollisionShape2D.position.x>0 and right) or ($KinematicBody2D/Area2D/CollisionShape2D.position.x<0  and not right):
+	if($KinematicBody2D/Area2D/CollisionShape2D.position.x>0 and not right) or ($KinematicBody2D/Area2D/CollisionShape2D.position.x<0  and right):
 		$KinematicBody2D/Area2D/CollisionShape2D.position.x *=-1
 	
 
 func move_right():
 	flip_hitbox()
 	movement.x =speed
-	$KinematicBody2D/AnimatedSprite.set_flip_h(false)
+	$KinematicBody2D/AnimatedSprite.set_flip_h(true)
 	$KinematicBody2D/AnimatedSprite.animation="walk"
 	
 func move_left():
 	movement.x =-speed
-	$KinematicBody2D/AnimatedSprite.set_flip_h(true)
+	$KinematicBody2D/AnimatedSprite.set_flip_h(false)
 	$KinematicBody2D/AnimatedSprite.animation="walk"
 	flip_hitbox()
 
