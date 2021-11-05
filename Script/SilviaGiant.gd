@@ -46,7 +46,7 @@ func _physics_process(delta):
 		print(target.get_parent().name)
 		if(target.get_parent().name.find("JosephKnight"))>=0:
 			target.reduce_health()
-			get_parent().get_node("CanvasProgress/Heart")._reduce_health()
+			get_parent().monster_strike()
 	if(cooldown>0):
 		cooldown-=delta
 	
@@ -74,8 +74,10 @@ func reduce_health(dmg=1):
 		health=0
 		death()
 func death():
-	$KinematicBody2D.visible=false
-	$KinematicBody2D/CollisionShape2D.disabled=true
-	$KinematicBody2D/RayCast2D.enabled=false
-	return "died"
-
+	if(health<=0):
+		$KinematicBody2D.visible=false
+		$KinematicBody2D/CollisionShape2D.disabled=true
+		$KinematicBody2D/RayCast2D.enabled=false
+		return "died"
+	else:
+		return "lived"

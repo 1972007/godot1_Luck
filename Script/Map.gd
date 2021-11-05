@@ -9,6 +9,9 @@ var bar
 var player_pos
 var player_cam
 
+var giant1stat =true
+var giant2stat=true
+var giant3stat=true
 
 var health = 3
 # Called when the node enters the scene tree for the first time.
@@ -31,9 +34,20 @@ func _physics_process(delta):
 	#	$JosephKnight/KinematicBody2D.health-=1
 	if($JosephKnight/KinematicBody2D.health==0):
 		get_tree().change_scene("res://Scene/Menu.tscn")
-	if($SilviaGiant.death()=="died"):
+	if($SilviaGiant.death()=="died" and giant1stat==true):
+		giant1stat =false
 		$CanvasProgress/Heart._max_health()
 		$JosephKnight/KinematicBody2D.health=3
+	if($LuckyGiant.death()=="died" and giant2stat==true):
+		giant2stat=false
+		$CanvasProgress/Heart._max_health()
+		$JosephKnight/KinematicBody2D.health=3
+	if($JosephGiant.death()=="died"  and giant3stat==true):
+		giant3stat=false
+		$CanvasProgress/Heart._max_health()
+		$JosephKnight/KinematicBody2D.health=3
+	if(giant1stat==false and giant2stat==false and giant1stat==false and bar.value>=100):
+		print("YOU WIN")
 #x max = 8435
 #x min = -57
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,5 +57,6 @@ func _process(delta):
 func player_strike(monster_node):
 	pass
 
-func monster_strike(monster_node):
-	pass
+func monster_strike():
+	$JosephKnight/KinematicBody2D.reduce_health()
+	$CanvasProgress/Heart._reduce_health()

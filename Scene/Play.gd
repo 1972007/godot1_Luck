@@ -13,7 +13,7 @@ func _ready():
 
 func _play():
 	get_tree().change_scene("res://Control.tscn")
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every frame. 'delta' is the elapsed time since the previous frame.`
 func _process(delta):
 	if(pressed):
 		_play()

@@ -28,8 +28,8 @@ func _reduce_health(dmg=1):
 	$HBoxContainer.get_child(hp_left).get_node("AnimatedSprite").set_frame(1)
 	
 func _max_health():
-	for x in range(hp_left,hp_def):
-		$HBoxContainer.get_child(hp_left).get_node("AnimatedSprite").set_frame(0)
+	for x in range(0,hp_def):
+		$HBoxContainer.get_child(x).get_node("AnimatedSprite").set_frame(0)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -256,7 +256,7 @@ position = Vector2( 1649.9, 415.593 )
 texture = ExtResource( 16 )
 
 [node name="pixil-frame-0" type="Sprite" parent="Map"]
-position = Vector2( 6528.38, 363.66 )
+position = Vector2( 6776.02, 368.422 )
 texture = ExtResource( 9 )
 
 [node name="CanvasProgress" type="CanvasLayer" parent="Map"]

@@ -57,8 +57,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
 scale = Vector2( 1.70614, 1.88724 )
 frames = SubResource( 7 )
-animation = "atk"
-frame = 1
+animation = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( -8.89041, -13.4695 )

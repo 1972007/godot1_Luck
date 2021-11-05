@@ -8,17 +8,21 @@ var movement=Vector2(0,0)
 const gravity = 20
 const jump_force = -400
 var jump_count = 0
-
 var cooldown=0
 var attack_time=0
 var health=3
+var default_raycast_pos
+var default_raycast_rot
+var default_hitbox_pos
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
 	$AnimatedSprite.animation="walk"
-	
-		
-		
+	count = 0
+	speed = 200
+	default_raycast_pos= $RayCast2D.position
+	default_hitbox_pos = $CollisionShape2D.position
+	default_raycast_rot=$RayCast2D.rotation
 func _physics_process(delta):
 	
 	if (not is_on_floor()):
@@ -80,8 +84,9 @@ func attack():
 	var target=$RayCast2D.get_collider()
 	if(target!=null):
 		print(target.get_parent().health)
-		if(target.get_parent().name.find("SilviaGiant"))>=0:
+		if(target.get_parent().name.find("SilviaGiant"))>=0 or (target.get_parent().name.find("LuckyGiant"))>=0 or (target.get_parent().name.find("JosephGiant"))>=0:
 			target.get_parent().reduce_health()
+			print("Attack ",target.get_parent().name)
 		
 	
 	$AnimatedSprite.animation="atk"
@@ -92,21 +97,28 @@ func walk():
 #	$attackCollision.disabled=true
 	
 func flip_hitbox():
-	if($RayCast2D.position.x<0 and Input.is_action_just_pressed("Kanan")) or ( Input.is_action_just_pressed("Kiri") and $RayCast2D.position.x>0):
-		$RayCast2D.position.x *=-1
-		$RayCast2D.rotation*=-1
+	if($RayCast2D.position.x<0 and Input.is_action_just_pressed("Kanan")):
+		$RayCast2D.position.x = default_raycast_pos.x
+		$RayCast2D.rotation = default_raycast_rot
+	elif( Input.is_action_just_pressed("Kiri") and $RayCast2D.position.x>0):
+		$RayCast2D.position.x = -default_raycast_pos.x
+		$RayCast2D.rotation = -default_raycast_rot
 		
-	if($CollisionShape2D.position.x>0 and Input.is_action_just_pressed("Kanan")) or ( Input.is_action_just_pressed("Kiri") and $CollisionShape2D.position.x<0):
-		$CollisionShape2D.position.x *=-1
+	if($CollisionShape2D.position.x>0 and Input.is_action_just_pressed("Kanan")):
+		$CollisionShape2D.position.x =default_hitbox_pos.x
+	elif ( Input.is_action_just_pressed("Kiri") and $CollisionShape2D.position.x<0):
+		$CollisionShape2D.position.x =-default_hitbox_pos.x
+		
 	
 
 func reduce_health(dmg=1):
 	if(health>dmg):
 		health-=dmg
 		if($AnimatedSprite.flip_h):
-			movement.x = -speed
+			movement.x = 40*speed
 		else:
-			movement.x=speed
+			movement.x=-40*speed
+		move_and_slide(movement,Vector2(0,-1))
 	else:
 		health=0
 
@@ -114,3 +126,4 @@ func death():
 	visible=false
 	$CollisionShape2D.disabled=true
 	$RayCast2D.enabled=false
+
