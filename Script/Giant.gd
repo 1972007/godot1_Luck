@@ -57,17 +57,19 @@ func reduce_health(dmg=1):
 func flip_hitbox():
 	if($KinematicBody2D/CollisionShape2D.position.x>0 and right) or ($KinematicBody2D/CollisionShape2D.position.x<0  and not right):
 		$KinematicBody2D/CollisionShape2D.position.x *=-1
-
+	if($KinematicBody2D/Area2D/CollisionShape2D.position.x>0 and right) or ($KinematicBody2D/Area2D/CollisionShape2D.position.x<0  and not right):
+		$KinematicBody2D/Area2D/CollisionShape2D.position.x *=-1
+	
 
 func move_right():
 	flip_hitbox()
 	movement.x =speed
-	$KinematicBody2D/AnimatedSprite.set_flip_h(true)
+	$KinematicBody2D/AnimatedSprite.set_flip_h(false)
 	$KinematicBody2D/AnimatedSprite.animation="walk"
 	
 func move_left():
 	movement.x =-speed
-	$KinematicBody2D/AnimatedSprite.set_flip_h(false)
+	$KinematicBody2D/AnimatedSprite.set_flip_h(true)
 	$KinematicBody2D/AnimatedSprite.animation="walk"
 	flip_hitbox()
 
@@ -79,3 +81,11 @@ func death():
 		return "died"
 	else:
 		return "lived"
+
+
+func _on_Area2D_body_entered(body):
+	
+	print(body.get_parent().name)
+	if(body.get_parent().name=="JosephKnight"):
+		print(body.get_parent().get_parent().name)
+		body.get_parent().get_parent().monster_strike()

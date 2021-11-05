@@ -62,3 +62,5 @@ shape = SubResource( 6 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Area2D"]
 position = Vector2( -34.4871, 8.32447 )
 shape = SubResource( 7 )
+
+[connection signal="body_entered" from="KinematicBody2D/Area2D" to="." method="_on_Area2D_body_entered"]

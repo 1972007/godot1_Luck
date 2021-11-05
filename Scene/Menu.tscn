@@ -9,19 +9,29 @@
 [ext_resource path="res://Pictures/Platformer assets pack/Platformer assets pack/Background/Background.png" type="Texture" id=7]
 [ext_resource path="res://Script/Exit.gd" type="Script" id=8]
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=9]
 flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 100, 100 )
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 200, 200 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=10]
 flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 100, 0, 100, 100 )
+atlas = ExtResource( 6 )
+region = Rect2( 200, 0, 200, 200 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 400, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 600, 0, 200, 200 )
+
+[sub_resource type="SpriteFrames" id=13]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -55,29 +65,19 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 200, 200 )
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 200, 0, 200, 200 )
+atlas = ExtResource( 4 )
+region = Rect2( 100, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=11]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 400, 0, 200, 200 )
-
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 600, 0, 200, 200 )
-
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -103,7 +103,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2( 0, -96.217 )
-scale = Vector2( 0.918032, 7.91345 )
+scale = Vector2( 2.11446, 22.0713 )
 texture = ExtResource( 7 )
 centered = false
 region_enabled = true
@@ -141,21 +141,24 @@ icon = ExtResource( 2 )
 flat = true
 script = ExtResource( 8 )
 
-[node name="monster1" type="AnimatedSprite" parent="."]
-position = Vector2( 508.362, 163.462 )
-scale = Vector2( 3, 3 )
-frames = SubResource( 3 )
+[node name="Node" type="Node" parent="."]
+
+[node name="knight2" type="AnimatedSprite" parent="Node"]
+position = Vector2( 830.538, 467.806 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 13 )
+frame = 3
 playing = true
 
-[node name="knight1" type="AnimatedSprite" parent="."]
+[node name="knight1" type="AnimatedSprite" parent="Node"]
 position = Vector2( 170, 478 )
 frames = SubResource( 8 )
 frame = 3
 playing = true
 
-[node name="knight2" type="AnimatedSprite" parent="."]
-position = Vector2( 830.538, 467.806 )
-scale = Vector2( 0.6, 0.6 )
-frames = SubResource( 13 )
-frame = 2
+[node name="monster1" type="AnimatedSprite" parent="Node"]
+position = Vector2( 508.362, 163.462 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 3 )
+frame = 1
 playing = true
