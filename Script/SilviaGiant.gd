@@ -12,6 +12,7 @@ var walk_distance=0
 const gravity = 20
 var right=true
 var health=4
+var cooldown=0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -32,17 +33,28 @@ func _physics_process(delta):
 	if(not right):
 		walk_distance-=speed
 		move_left()
-	if(walk_distance>24000):
+	if(walk_distance>24000 ):
 		right=false
 	if(walk_distance<0):
 		right=true
 	movement.x = lerp(movement.x,0,0.1)
 	$KinematicBody2D.move_and_slide(movement,Vector2(0,-0.5))
 	
+	var target=$KinematicBody2D/RayCast2D.get_collider()
+	if(target!=null and cooldown<=0):
+		cooldown=0.5
+		print(target.get_parent().name)
+		if(target.get_parent().name.find("JosephKnight"))>=0:
+			target.reduce_health()
+			get_parent().get_node("CanvasProgress/Heart")._reduce_health()
+	if(cooldown>0):
+		cooldown-=delta
+	
 	
 func flip_hitbox():
-	if($KinematicBody2D/attackCollision.position.x>0 and not right) or ( $KinematicBody2D/attackCollision.position.x<0 and right):
-		$KinematicBody2D/attackCollision.position.x *=-1
+	if($KinematicBody2D/RayCast2D.position.x>0 and not right) or ( $KinematicBody2D/RayCast2D.position.x<0 and right):
+
+		$KinematicBody2D/RayCast2D.position.x*=-1
 	elif($KinematicBody2D/CollisionShape2D.position.x>0 and right) or ( $KinematicBody2D/CollisionShape2D.position.x<0  and not right):
 		$KinematicBody2D/CollisionShape2D.position.x *=-1
 
@@ -64,5 +76,6 @@ func reduce_health(dmg=1):
 func death():
 	$KinematicBody2D.visible=false
 	$KinematicBody2D/CollisionShape2D.disabled=true
-	$KinematicBody2D/attackCollision.disabled=true
+	$KinematicBody2D/RayCast2D.enabled=false
+	return "died"
 

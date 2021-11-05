@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://sprite/Silvia'sGiant.png" type="Texture" id=1]
 [ext_resource path="res://Script/SilviaGiant.gd" type="Script" id=2]
@@ -28,14 +28,11 @@ animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "idle",
-"speed": 10.0
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 14.9536, 34.2783 )
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 8.55469, 15.2999 )
 
 [node name="SilviaGiant" type="Node2D"]
 script = ExtResource( 2 )
@@ -46,12 +43,14 @@ script = ExtResource( 2 )
 position = Vector2( 0, -1.49765 )
 frames = SubResource( 5 )
 animation = "idle"
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( 1.25993, -0.629944 )
 shape = SubResource( 6 )
 
-[node name="attackCollision" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 25.1984, -2.51984 )
-shape = SubResource( 7 )
+[node name="RayCast2D" type="RayCast2D" parent="KinematicBody2D"]
+position = Vector2( 28.4678, -14.9831 )
+scale = Vector2( -2, 0.432 )
+enabled = true

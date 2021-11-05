@@ -4,13 +4,14 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var speed=200
+var speed=700
 const gravity = 10
 var jump_count = 0
 var rng = RandomNumberGenerator.new()
 var movement=Vector2(0,0)
 const jump_force = -700
 var right_left=0
+var health=4
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -46,3 +47,9 @@ func move_left():
 	movement.y += jump_force
 	jump_count=1
 	movement.x -=speed
+
+func reduce_health(dmg=1):
+	if(health>dmg):
+		health-=dmg
+	else:
+		health=0

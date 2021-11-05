@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 # Declare member variables here. Examples:
 export var count = 0
-export var speed = 2000
+export var speed = 200
 var movement=Vector2(0,0)
 const gravity = 20
 const jump_force = -400
@@ -16,7 +16,6 @@ var health=3
 func _ready():
 	
 	$AnimatedSprite.animation="walk"
-	$attackCollision.disabled=true
 	
 		
 		
@@ -30,9 +29,11 @@ func _physics_process(delta):
 		movement.x = lerp(movement.x,0,0.1)
 	if(Input.is_action_pressed("Kanan")):
 		$AnimatedSprite.set_flip_h(false)
+		flip_hitbox()
 		movement.x = speed
 	elif(Input.is_action_pressed("Kiri")):
 		$AnimatedSprite.set_flip_h(true)
+		flip_hitbox()
 		
 		movement.x = -speed
 	else:
@@ -78,10 +79,10 @@ func attack():
 #	$attackCollision.disabled=false
 	var target=$RayCast2D.get_collider()
 	if(target!=null):
-		print(target.get_parent().name)
+		print(target.get_parent().health)
 		if(target.get_parent().name.find("SilviaGiant"))>=0:
 			target.get_parent().reduce_health()
-	
+		
 	
 	$AnimatedSprite.animation="atk"
 	$AnimatedSprite.set_frame(1)
@@ -90,15 +91,26 @@ func walk():
 	$AnimatedSprite.animation="walk"
 #	$attackCollision.disabled=true
 	
-#func flip_hitbox():
-#	if($attackCollision.position.x<0 and Input.is_action_just_pressed("Kanan")) or ( Input.is_action_just_pressed("Kiri") and $attackCollision.position.x>0):
-#		$attackCollision.position.x *=-1
-#	if($CollisionShape2D.position.x>0 and Input.is_action_just_pressed("Kanan")) or ( Input.is_action_just_pressed("Kiri") and $CollisionShape2D.position.x<0):
-#		$CollisionShape2D.position.x *=-1
+func flip_hitbox():
+	if($RayCast2D.position.x<0 and Input.is_action_just_pressed("Kanan")) or ( Input.is_action_just_pressed("Kiri") and $RayCast2D.position.x>0):
+		$RayCast2D.position.x *=-1
+		$RayCast2D.rotation*=-1
 		
+	if($CollisionShape2D.position.x>0 and Input.is_action_just_pressed("Kanan")) or ( Input.is_action_just_pressed("Kiri") and $CollisionShape2D.position.x<0):
+		$CollisionShape2D.position.x *=-1
+	
 
 func reduce_health(dmg=1):
 	if(health>dmg):
 		health-=dmg
+		if($AnimatedSprite.flip_h):
+			movement.x = -speed
+		else:
+			movement.x=speed
 	else:
 		health=0
+
+func death():
+	visible=false
+	$CollisionShape2D.disabled=true
+	$RayCast2D.enabled=false

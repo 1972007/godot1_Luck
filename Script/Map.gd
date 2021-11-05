@@ -31,7 +31,9 @@ func _physics_process(delta):
 	#	$JosephKnight/KinematicBody2D.health-=1
 	if($JosephKnight/KinematicBody2D.health==0):
 		get_tree().change_scene("res://Scene/Menu.tscn")
-	
+	if($SilviaGiant.death()=="died"):
+		$CanvasProgress/Heart._max_health()
+		$JosephKnight/KinematicBody2D.health=3
 #x max = 8435
 #x min = -57
 # Called every frame. 'delta' is the elapsed time since the previous frame.
