@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://sprite/Pixilart Sprite Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Script/Giant.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -42,6 +43,7 @@ extents = Vector2( 32.4224, 75.5808 )
 extents = Vector2( 31.4787, 74.5959 )
 
 [node name="Giant" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 

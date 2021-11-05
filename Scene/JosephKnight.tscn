@@ -80,3 +80,8 @@ editor_draw_limits = true
 position = Vector2( 28.688, -27.4744 )
 shape = SubResource( 9 )
 disabled = true
+
+[node name="RayCast2D" type="RayCast2D" parent="KinematicBody2D"]
+position = Vector2( 2.82843, -28.2843 )
+rotation = -1.5708
+enabled = true

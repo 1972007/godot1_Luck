@@ -16,12 +16,13 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
-	
+	#print($KinematicBody2D/attackCollision.disabled)
 	if (not $KinematicBody2D.is_on_floor()):
 		movement.y += gravity
 		$KinematicBody2D/attackCollision.disabled=false
 		
 	else:
+		$KinematicBody2D/attackCollision.disabled=true
 		movement.y = 0
 		if(jump_count<=0):
 			if(right_left==0):

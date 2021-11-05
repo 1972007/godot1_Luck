@@ -28,10 +28,10 @@ animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "idle",
-"speed": 5.0
+"speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 14.9536, 34.2783 )
 
 [sub_resource type="RectangleShape2D" id=7]
@@ -46,14 +46,12 @@ script = ExtResource( 2 )
 position = Vector2( 0, -1.49765 )
 frames = SubResource( 5 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( 1.25993, -0.629944 )
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="attackCollision" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( 25.1984, -2.51984 )
 shape = SubResource( 7 )
-disabled = true

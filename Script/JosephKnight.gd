@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 # Declare member variables here. Examples:
 export var count = 0
-export var speed = 200
+export var speed = 2000
 var movement=Vector2(0,0)
 const gravity = 20
 const jump_force = -400
@@ -61,11 +61,11 @@ func _physics_process(delta):
 		attack_time-=delta	
 	else:
 		walk()
-	print(cooldown)
+	#print(cooldown)
 	if(cooldown>0):
 		cooldown-=delta
 	move_and_slide(movement,Vector2(0,-1))
-	flip_hitbox()
+#	flip_hitbox()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -75,22 +75,29 @@ func get_pos():
 func attack():
 	
 	print("Attack")
-	$attackCollision.disabled=false
+#	$attackCollision.disabled=false
+	var target=$RayCast2D.get_collider()
+	if(target!=null):
+		print(target.get_parent().name)
+		if(target.get_parent().name.find("SilviaGiant"))>=0:
+			target.get_parent().reduce_health()
+	
+	
 	$AnimatedSprite.animation="atk"
 	$AnimatedSprite.set_frame(1)
 func walk():
 	
 	$AnimatedSprite.animation="walk"
-	$attackCollision.disabled=true
+#	$attackCollision.disabled=true
 	
-func flip_hitbox():
-	if($attackCollision.position.x<0 and Input.is_action_just_pressed("Kanan")) or ( Input.is_action_just_pressed("Kiri") and $attackCollision.position.x>0):
-		$attackCollision.position.x *=-1
-	if($CollisionShape2D.position.x>0 and Input.is_action_just_pressed("Kanan")) or ( Input.is_action_just_pressed("Kiri") and $CollisionShape2D.position.x<0):
-		$CollisionShape2D.position.x *=-1
+#func flip_hitbox():
+#	if($attackCollision.position.x<0 and Input.is_action_just_pressed("Kanan")) or ( Input.is_action_just_pressed("Kiri") and $attackCollision.position.x>0):
+#		$attackCollision.position.x *=-1
+#	if($CollisionShape2D.position.x>0 and Input.is_action_just_pressed("Kanan")) or ( Input.is_action_just_pressed("Kiri") and $CollisionShape2D.position.x<0):
+#		$CollisionShape2D.position.x *=-1
 		
 
-func reduce_health(dmg):
+func reduce_health(dmg=1):
 	if(health>dmg):
 		health-=dmg
 	else:
