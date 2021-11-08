@@ -33,7 +33,7 @@ func _physics_process(delta):
 	#	$CanvasProgress/Heart._reduce_one()
 	#	$JosephKnight/KinematicBody2D.health-=1
 	if($JosephKnight/KinematicBody2D.health==0):
-		get_tree().change_scene("res://Scene/Menu.tscn")
+		get_tree().change_scene("res://Scene/lose.tscn")
 	if($SilviaGiant.death()=="died" and giant1stat==true):
 		giant1stat =false
 		$CanvasProgress/Heart._max_health()

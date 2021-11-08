@@ -121,7 +121,7 @@ __meta__ = {
 scroll_base_scale = Vector2( 0, 0 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( -38.0976, 89.063 )
+position = Vector2( 0, 97 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -177,11 +177,10 @@ script = ExtResource( 8 )
 position = Vector2( -149.831, 158.821 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 8 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="VBoxContainer"]
 position = Vector2( 462.977, 134.848 )
 frames = SubResource( 13 )
-frame = 2
 playing = true

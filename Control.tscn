@@ -426,11 +426,11 @@ position = Vector2( 6763.18, 306.872 )
 scale = Vector2( 2.5, 2.5 )
 
 [node name="Lucky\'sKnight" parent="Map" instance=ExtResource( 5 )]
-position = Vector2( 145.588, 489.426 )
+position = Vector2( 6974.89, 489.426 )
 scale = Vector2( 2, 2 )
 
 [node name="SilviaKnight" parent="Map" instance=ExtResource( 7 )]
-position = Vector2( 207.131, 452.032 )
+position = Vector2( 6974.89, 452.032 )
 
 [node name="JosephKnight" parent="Map" instance=ExtResource( 1 )]
 position = Vector2( 103.443, 501.752 )
