@@ -1,0 +1,256 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Pictures/Platformer assets pack/Platformer assets pack/Background/Background.png" type="Texture" id=1]
+[ext_resource path="res://sprite/Lucky'sMonster.png" type="Texture" id=2]
+[ext_resource path="res://sprite/Silvia'sGiant.png" type="Texture" id=3]
+[ext_resource path="res://sprite/Pixilart Sprite Sheet (1).png" type="Texture" id=4]
+[ext_resource path="res://Scene/Play2.gd" type="Script" id=5]
+[ext_resource path="res://Pictures/Menu/Play2.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFontData" id=3]
+resource_local_to_scene = true
+font_path = "res://Minecraft.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+extra_spacing_top = 20
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFontData" id=1]
+resource_local_to_scene = true
+font_path = "res://Minecraft.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 24
+font_data = SubResource( 1 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 100, 0, 100, 100 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 100, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 200, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 300, 0, 100, 100 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 600, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 700, 0, 100, 100 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_scale = Vector2( 0, 0 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 0, 97 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 0, -338.983 )
+scale = Vector2( 1.35593, 16.4222 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 2, 83, 1120, 76 )
+
+[node name="Title" type="RichTextLabel" parent="."]
+margin_right = 1024.0
+margin_bottom = 70.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]HELP[/center]"
+text = "HELP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 50.0
+margin_top = 70.0
+margin_right = 350.0
+margin_bottom = 100.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "Press A to move left"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = 680.0
+margin_top = 70.0
+margin_right = 980.0
+margin_bottom = 100.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "Press D to move right"
+text = "Press D to move right"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 143.837, 202.271 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 7 )
+frame = 1
+playing = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+margin_left = 250.0
+margin_top = 180.0
+margin_right = 970.0
+margin_bottom = 240.0
+rect_pivot_offset = Vector2( 226.852, 28.4384 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "The jumper. He doesnt jump too much but when he does, he stomps you"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 142.34, 297.998 )
+scale = Vector2( 1.2, 1.2 )
+frames = SubResource( 12 )
+frame = 2
+playing = true
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+margin_left = 250.0
+margin_top = 270.0
+margin_right = 970.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 226.852, 28.4384 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_text = "The novice giant. He tried his best to be a better giant, but he always stroke the sword too high"
+text = "The novice giant. He tried his best to be a better giant, but he always stroke the sword too high"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
+position = Vector2( 145.963, 404.525 )
+scale = Vector2( 1.2, 1.2 )
+frames = SubResource( 15 )
+playing = true
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+margin_left = 250.0
+margin_top = 360.0
+margin_right = 970.0
+margin_bottom = 450.0
+rect_pivot_offset = Vector2( 226.852, 28.4384 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "The brown giant. His advance dooms the opponent, but easily get tired after some step."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="."]
+margin_top = 468.0
+margin_right = 1024.0
+margin_bottom = 498.0
+rect_pivot_offset = Vector2( 226.852, 28.4384 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]Defeat all of the enemies and reach the right flag to win[/center]"
+text = "Defeat all of the enemies and reach the right flag to win"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="."]
+margin_top = 107.0
+margin_right = 1024.0
+margin_bottom = 137.0
+rect_pivot_offset = Vector2( 226.852, 28.4384 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]Press J to attack monster[/center]"
+text = "Press J to attack monster"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="."]
+margin_left = 430.082
+margin_top = 514.654
+margin_right = 742.082
+margin_bottom = 642.654
+rect_scale = Vector2( 0.5, 0.5 )
+size_flags_horizontal = 4
+icon = ExtResource( 6 )
+flat = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Play" to="Play" method="_on_Play_pressed"]

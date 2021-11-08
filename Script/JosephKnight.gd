@@ -33,11 +33,17 @@ func _physics_process(delta):
 		movement.x = lerp(movement.x,0,0.1)
 	if(Input.is_action_pressed("Kanan")):
 		$AnimatedSprite.set_flip_h(false)
-		flip_hitbox()
+		$RayCast2D.position.x = default_raycast_pos.x
+		$RayCast2D.rotation = default_raycast_rot
+		$CollisionShape2D.position.x =default_hitbox_pos.x
+		#flip_hitbox()
 		movement.x = speed
 	elif(Input.is_action_pressed("Kiri")):
 		$AnimatedSprite.set_flip_h(true)
-		flip_hitbox()
+		$RayCast2D.position.x = -default_raycast_pos.x
+		$RayCast2D.rotation = -default_raycast_rot
+		$CollisionShape2D.position.x =-default_hitbox_pos.x
+		#flip_hitbox()
 		
 		movement.x = -speed
 	else:
@@ -97,23 +103,15 @@ func walk():
 #	$attackCollision.disabled=true
 	
 func flip_hitbox():
-	if($RayCast2D.position.x<0 and Input.is_action_just_pressed("Kanan")):
-		$RayCast2D.position.x = default_raycast_pos.x
-		$RayCast2D.rotation = default_raycast_rot
-	elif( Input.is_action_just_pressed("Kiri") and $RayCast2D.position.x>0):
-		$RayCast2D.position.x = -default_raycast_pos.x
-		$RayCast2D.rotation = -default_raycast_rot
+	pass
 		
-	if($CollisionShape2D.position.x>0 and Input.is_action_just_pressed("Kanan")):
-		$CollisionShape2D.position.x =default_hitbox_pos.x
-	elif ( Input.is_action_just_pressed("Kiri") and $CollisionShape2D.position.x<0):
-		$CollisionShape2D.position.x =-default_hitbox_pos.x
 		
 	
 
 func reduce_health(dmg=1):
 	if(health>dmg):
 		health-=dmg
+		movement.x = lerp(movement.x,0,0.1)
 		if($AnimatedSprite.flip_h):
 			movement.x = 40*speed
 		else:

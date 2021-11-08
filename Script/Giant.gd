@@ -46,7 +46,7 @@ func _physics_process(delta):
 		$KinematicBody2D/Area2D/CollisionShape2D.disabled=false
 		move_left()
 	cooldown+=delta
-	print("Cooldown : ",cooldown)
+	#print("Cooldown : ",cooldown)
 	if(walk_distance>=40000 and cooling==false):
 		cooldown=0
 		$KinematicBody2D/Area2D/CollisionShape2D.disabled=true

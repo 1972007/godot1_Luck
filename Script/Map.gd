@@ -46,7 +46,7 @@ func _physics_process(delta):
 		giant3stat=false
 		$CanvasProgress/Heart._max_health()
 		$JosephKnight/KinematicBody2D.health=3
-	if(giant1stat==false and giant2stat==false and giant1stat==false and bar.value>=100):
+	if(giant1stat==false and giant2stat==false and giant3stat==false and bar.value>=100):
 		get_tree().change_scene("res://Scene/win.tscn")
 		print("YOU WIN")
 # Called every frame. 'delta' is the elapsed time since the previous frame.

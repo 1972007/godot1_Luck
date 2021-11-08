@@ -21,10 +21,8 @@ func _physics_process(delta):
 	#print($KinematicBody2D/attackCollision.disabled)
 	if (not $KinematicBody2D.is_on_floor()):
 		movement.y += gravity
-		$KinematicBody2D/Area2D/CollisionShape2D.disabled=false
 		
 	else:
-		$KinematicBody2D/Area2D/CollisionShape2D.disabled=true
 		movement.y = 0
 		if(jump_count<=0 and cooldown>=0.3):
 			attack()
