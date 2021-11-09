@@ -72,6 +72,5 @@ offset = Vector2( -16, 16 )
 scale = Vector2( 0.529628, 0.558755 )
 frames = SubResource( 5 )
 animation = "New Anim"
-frame = 3
 playing = true
 centered = false

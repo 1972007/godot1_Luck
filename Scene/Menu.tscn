@@ -177,10 +177,11 @@ script = ExtResource( 8 )
 position = Vector2( -149.831, 158.821 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 8 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="VBoxContainer"]
 position = Vector2( 462.977, 134.848 )
 frames = SubResource( 13 )
+frame = 2
 playing = true
